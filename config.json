@@ -20,10 +20,12 @@
 		"clientID": "testing"
 	},
 	"local": {
-		"host": "100.64.1.169",
+		"host": "localhost",
 		"port": 1883,
 		"keepalive": 60,
 		"topics": ["crk"],
-		"clientID": "testing"
+		"clientID": "testing",
+		"sensor": "teapot_plug",
+		"modelDir": "./"
 	}
 }

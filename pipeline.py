@@ -1,4 +1,4 @@
-from deployModels.mqttHandler.communicate import *
+from deployModels.HLdeployer.communicate import *
 import json
 
 def blah(mosq, obj, msg):

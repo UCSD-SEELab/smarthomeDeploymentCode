@@ -50,7 +50,7 @@ class loadModel():
     
 if __name__=="__main__":
     import json
-    with open("./config.json") as fp:
+    with open("../test/config.json") as fp:
         conf = json.load(fp)
 
     model = loadModel(conf)

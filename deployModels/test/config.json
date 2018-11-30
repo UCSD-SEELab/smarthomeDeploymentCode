@@ -1,6 +1,6 @@
 {
 	"sensor": "teapot_plug",
-	"modelDir": "../",
+	"modelDir": "../test/",
 	"local": {
 		"host": "127.0.0.1",
 		"port": 1883,
@@ -8,6 +8,6 @@
 		"topics": ["crk"],
 		"clientID": "testing",
 		"sensor": "teapot_plug",
-		"modelDir": "../"
+		"modelDir": "../test/"
 	}
 }

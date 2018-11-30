@@ -68,7 +68,7 @@ class communicate(loadModel):
         return json.loads(result)
 
 if __name__ == '__main__':
-    with open("./config.json", 'r') as confFile:
+    with open("../test/config.json", 'r') as confFile:
         conf = json.load(confFile)["local"]
 
     def blah(mosq, obj, msg):

@@ -1,7 +1,5 @@
 import paho.mqtt.client as paho
-import time
 import json
-from datetime import datetime
 
 class communicate():
     def __init__(self, conf, callbacks):

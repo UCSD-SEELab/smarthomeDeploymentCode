@@ -54,6 +54,6 @@ if __name__=="__main__":
         conf = json.load(fp)
 
     model = loadModel(conf)
-    res = model.compute([[2, 3]])
+    res = model.compute([[2.0, 3.0]])
     print(res)
     

@@ -1,0 +1,31 @@
+{
+	"server": {
+		"host": "192.168.10.6",
+		"port": 61613,
+		"keepalive": 60,
+		"username": "admin",
+		"pwd": "IBMProject$",
+		"topics": ["MetaSense/nnjson", "pressuremat_inference", "teapot_plug_inference"],
+		"clientID": "kitchenHub",
+		"sensor": "kitchen",
+		"modelDir": "./model/"
+	},
+	"test": {
+		"host": "test.mosquitto.org",
+		"port": 1883,
+		"keepalive": 60,
+		"topics": ["MetaSense/nnjson", "pressuremat_inference", "teapot_plug_inference"],
+		"clientID": "testing",
+		"sensor": "kitchen",
+		"modelDir": "./model/"
+	},
+	"local": {
+		"host": "127.0.0.1",
+		"port": 1883,
+		"keepalive": 60,
+		"topics": ["MetaSense/nnjson", "pressuremat_inference", "teapot_plug_inference"],
+		"clientID": "testing",
+		"sensor": "kitchen",
+		"modelDir": "../model/"
+	}
+}

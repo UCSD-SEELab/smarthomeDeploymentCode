@@ -57,7 +57,7 @@ class communicate(loadModel):
             for key, vals in self.dataDict.items():
                 feature_vec = feature_vec + vals
 
-            result = self.compute([feature_vec])
+            result = self.compute([feature_vec])[0]
             print self.compute([feature_vec])
             self.sendData(self.outputTopic, "{data:" + str(result) +"}") 
             time.sleep(3)

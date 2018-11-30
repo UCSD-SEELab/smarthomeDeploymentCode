@@ -8,7 +8,9 @@
 		"topics": ["tv_plug_inference"],
 		"clientID": "livingroomHub",
 		"sensor": "livingroom",
-		"modelDir": "./model/"
+		"modelDir": "./model/",
+		"numInputs": 2,
+		"outputTopic": "livingroom_inference"
 	},
 	"test": {
 		"host": "test.mosquitto.org",
@@ -17,7 +19,9 @@
 		"topics": ["tv_plug_inference"],
 		"clientID": "testing",
 		"sensor": "livingroom",
-		"modelDir": "./model/"
+		"modelDir": "./model/",
+		"numInputs": 2,
+		"outputTopic": "livingroom_inference"
 	},
 	"local": {
 		"host": "127.0.0.1",
@@ -26,6 +30,8 @@
 		"topics": ["tv_plug_inference"],
 		"clientID": "testing",
 		"sensor": "livingroom",
-		"modelDir": "../model/"
+		"modelDir": "../model/",
+		"numInputs": 2,
+		"outputTopic": "livingroom_inference"
 	}
 }

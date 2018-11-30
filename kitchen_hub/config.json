@@ -8,6 +8,8 @@
 		"topics": ["MetaSense/nnjson", "pressuremat_inference", "teapot_plug_inference"],
 		"clientID": "kitchenHub",
 		"sensor": "kitchen",
+		"numInputs": 2,
+		"outputTopic": "kitchen_inference",
 		"modelDir": "./model/"
 	},
 	"test": {
@@ -17,6 +19,8 @@
 		"topics": ["MetaSense/nnjson", "pressuremat_inference", "teapot_plug_inference"],
 		"clientID": "testing",
 		"sensor": "kitchen",
+		"numInputs": 2,
+		"outputTopic": "kitchen_inference",
 		"modelDir": "./model/"
 	},
 	"local": {
@@ -26,6 +30,8 @@
 		"topics": ["MetaSense/nnjson", "pressuremat_inference", "teapot_plug_inference"],
 		"clientID": "testing",
 		"sensor": "kitchen",
+		"numInputs": 2,
+		"outputTopic": "kitchen_inference",
 		"modelDir": "../model/"
 	}
 }

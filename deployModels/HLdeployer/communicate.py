@@ -18,6 +18,7 @@ class communicate(loadModel):
         self.conf = conf
         self.dataDict = OrderedDict()
         self.topics = self.conf['topics']
+        self.outputTopic = conf['outputTopic']
         self.mqttClient = paho.Client(conf["clientID"])
 
         if "username" in self.conf.keys():
@@ -31,7 +32,7 @@ class communicate(loadModel):
             assert len(self.topics) == len(callbacks), "each topic should have a callback"
 
             for topic,func in zip(self.topics, callbacks):
-                self.dataDict[topic] = [2, 3]
+                self.dataDict[topic] = [0.0] * conf["numInputs"]
                 self.mqttClient.message_callback_add(topic, func)
                 self.mqttClient.subscribe(topic)
 
@@ -56,7 +57,9 @@ class communicate(loadModel):
             for key, vals in self.dataDict.items():
                 feature_vec = feature_vec + vals
 
+            result = self.compute([feature_vec])
             print self.compute([feature_vec])
+            self.sendData(self.outputTopic, "{data:" + str(result) +"}") 
             time.sleep(3)
 
     def predictFromWeights(self, inputFeat):

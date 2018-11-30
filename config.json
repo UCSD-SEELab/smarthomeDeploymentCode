@@ -1,0 +1,29 @@
+{
+	"server": {
+		"host": "192.168.10.6",
+		"port": 61613,
+		"keepalive": 60,
+		"username": "admin",
+		"clientID": "testing",
+		"pwd": "IBMProject$",
+		"topics": ["Smartthings/Contact 1/contact",
+	                "Smartthings/Contact 2/contact",
+	                "Smartthings/Drawer 1/contact",
+	                "Smartthings/Drawer 2/contact",
+	                "Smartthings/Fridge/contact"]
+	},
+	"test": {
+		"host": "test.mosquitto.org",
+		"port": 1883,
+		"keepalive": 60,
+		"topics": ["crk"],
+		"clientID": "testing"
+	},
+	"local": {
+		"host": "100.64.1.169",
+		"port": 1883,
+		"keepalive": 60,
+		"topics": ["crk"],
+		"clientID": "testing"
+	}
+}

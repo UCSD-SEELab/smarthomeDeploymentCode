@@ -14,7 +14,7 @@ else:
     from loadModel import *
 
 class communicate(loadModel):
-    def __init__(self, conf, callbacks = None):
+    def __init__(self, conf, callbacks = None, useTensor = True):
         self.conf = conf
         self.dataDict = OrderedDict()
         self.topics = self.conf['topics']
@@ -36,8 +36,16 @@ class communicate(loadModel):
                 self.mqttClient.message_callback_add(topic, func)
                 self.mqttClient.subscribe(topic)
 
+        if useTensor:
             if 'tensorflow' in sys.modules:
                 loadModel.__init__(self, conf)
+            else:
+                print("error Tensorflow not installed")
+                exit()
+        else:
+            self.modelDir = conf["modelDir"].strip(".")
+            self.outputVal = [0] * conf["outputLength"]
+            subprocess.call(["make", "-C", conf["modelDir"]])
                 
     def sendData(self, topic, msg):
         self.mqttClient.publish(topic, msg)
@@ -64,10 +72,11 @@ class communicate(loadModel):
 
     def predictFromWeights(self, inputFeat):
         feature_vec = [str(val) for val in inputFeat]
-        callArr = ["./compute"].extend(feature_vec)
+        callArr = ["." + self.modelDir + "compute"] + feature_vec
         process = subprocess.Popen(callArr, stdout = subprocess.PIPE)
         result, err = process.communicate()
         print (result)
+        self.sendData(self.outputTopic, "{data:" + str(result) +"}") 
         return json.loads(result)
 
 if __name__ == '__main__':

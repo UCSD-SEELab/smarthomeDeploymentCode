@@ -1,9 +1,13 @@
 {
+	"sensor": "teapot_plug",
+	"modelDir": "../",
 	"local": {
-		"host": "localhost",
+		"host": "127.0.0.1",
 		"port": 1883,
 		"keepalive": 60,
 		"topics": ["crk"],
-		"clientID": "testing"
+		"clientID": "testing",
+		"sensor": "teapot_plug",
+		"modelDir": "../"
 	}
 }

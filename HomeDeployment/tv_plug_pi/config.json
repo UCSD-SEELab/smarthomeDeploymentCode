@@ -32,7 +32,7 @@
 		"topics": [""],
 		"clientID": "testing",
 		"sensor": "tv_plug",
-		"modelDir": "../model/",
+		"modelDir": "./model/",
 		"numInputs": 2,
 		"outputLength": 2,
 		"outputTopic": "tv_plu"

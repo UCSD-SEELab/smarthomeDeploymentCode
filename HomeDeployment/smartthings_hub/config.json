@@ -30,7 +30,7 @@
 		"topics": ["smartthings/Contact 1/contact", "smartthings/Contact 2/contact", "smartthings/Drawer 1/contact", "smartthings/Drawer 2/contact", "smartthings/Fridge/contact"],
 		"clientID": "testing",
 		"sensor": "smartthings",
-		"modelDir": "../model/",
+		"modelDir": "./model/",
 		"numInputs": 3,
 		"outputTopic": "smartthings_inference"
 	}

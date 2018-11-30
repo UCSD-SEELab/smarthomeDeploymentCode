@@ -32,6 +32,6 @@
 		"sensor": "kitchen",
 		"numInputs": 2,
 		"outputTopic": "kitchen_inference",
-		"modelDir": "../model/"
+		"modelDir": "./model/"
 	}
 }

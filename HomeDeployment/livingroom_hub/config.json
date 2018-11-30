@@ -30,7 +30,7 @@
 		"topics": ["tv_plug_inference"],
 		"clientID": "testing",
 		"sensor": "livingroom",
-		"modelDir": "../model/",
+		"modelDir": "./model/",
 		"numInputs": 2,
 		"outputTopic": "livingroom_inference"
 	}

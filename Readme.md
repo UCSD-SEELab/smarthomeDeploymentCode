@@ -8,12 +8,12 @@ various devices. The repo is divided into 2 folders:
 The Library holds a python module which we wrote for making deployment easier. The 
 library contains 2 submodules.
 
-'''
+```
 /deployModels
 	/communicate - Handles the mqtt messaging, makes use of loadModel to predict and 
 	send the result to the next layer
 	/loadModel - Handles loading the frozen tensorflow modules and produces the output
-'''
+```
 
 # How to use the deployModules module
 
@@ -22,7 +22,7 @@ configuration parameters for the mqtt host, port and other relevant information.
 different fields are given below. Some of the fileds are mandatory while others are 
 optional depending on the functionality desired
 
-'''
+```
 {
 	<name of config>: {
 		"host": <hostaddress of the broker>,
@@ -38,4 +38,4 @@ optional depending on the functionality desired
 		"modelDir": <path to the folder where the frozen models are located at> 
 	}
 }
-'''
+```

@@ -42,6 +42,7 @@ optional depending on the functionality desired
 
 The below table shows which fields are mandatory and their use
 Name of Field | Mandatory | Usage
+------------- | --------- | -----
 host | Yes | Host address
 port | Yes | Port on which mqtt host listens on
 keepalive | Yes | keepalive value for mqtt server

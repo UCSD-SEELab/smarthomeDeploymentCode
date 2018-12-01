@@ -50,12 +50,13 @@ port | Yes | Port on which mqtt host listens on
 keepalive | Yes | keepalive value for mqtt server
 username | Optional | If the host requires credentials then username needs to be suplied
 pwd | Optional | Used if host requires login credentials
-topics | Optional | Topics need to be listed, if the mqtt client needs to subscribe for any 
-particular topic. In our architecture, for simplicity, we do not configure point to point communication
-between the devices in different hierarchy. Instead we use a common message bus on which every device communicates.
-We partition the hierarchy by configuring each device to subscribe only to those topics that it requires access to.
+topics | Optional | Topics need to be listed, if the mqtt client needs to subscribe for any particular topic. In our architecture, for simplicity, we do not configure point to point communication between the devices in different hierarchy. Instead we use a common message bus on which every device communicate. We partition the hierarchy by configuring each device to subscribe only to those topics that it requires access to.
 clientID | Yes | Each node communicating must have a unique clientID
-sensor | Yes | This 
+sensor | Yes | This field is used to load the frozen module. The frozen model for each node is of the form <sensor>_frozen.pb. 
+numInputs | Yes | This field indicates the number of features for each topic that is subscribed to. This is used for initialization internally.
+outputTopic | Yes | This is the topic to which the processed data must be sent to on the broker.
+modelDir | Yes | This is the path to the folder in which the frozen models are stored in
+
 
 
 

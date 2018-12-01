@@ -79,6 +79,17 @@ result = model.compute([[2.0, 3.0]])
 print result
 # [[[-0.30995443  0.3088935 ]]]
 ```
+### communicate
+
+The communicate class inherits the loadModel class and provides wrappers for mqtt and looping functions to perform inference every 3 seconds (which is our choosen time interval based on data analysis). This feature is used in the 2nd level of hierarchy (data aggregators).
+
+Function name | Arguments | Functionality
+------------- | --------- | -------------
+sendData | topic, msg string | Sends the data to the specified topic to the broker (given in config file)
+startListening | - | Starts the mqtt client loop which listens for data on all topics subscribed to and triggers the respective callbacks when data is recieved
+stopListening | - | Stop the mqtt client loop
+predictionLoop | - | This function repeatedly performs inference every 3 seconds and sends the inference result to the mqtt broker on the topic specified in configuration file. This function is used in the 2nd level of hierarchy - at the data aggregators as explained later.
+
 
 
 

@@ -118,8 +118,12 @@ with open("./config.json", 'r') as confFile:
 com = communicate(conf, [on_msg_metasense, on_msg_mat, on_msg_plug])
 com.startListening() #start the mqtt client on a listening loop to look out for messages
 com.predictionLoop() #this function automatically performs inference on the last stored value in the internal variable every 3 seconds and sends the result
-
 ```
+# Code we used for deploying in the home
 
+The HomeDeployment folder contains the code that we used for the different rooms and the plug sensors. Each folder contains code that runs on a Pi.
+The Pis connected to the plug meters are Pi Zeros and all the others are Pi Model B 2
 
-https://github.com/j05h/hs100
+# License Information
+The code for connecting to the tp link plug was taken from this [repository](https://github.com/j05h/hs100)
+

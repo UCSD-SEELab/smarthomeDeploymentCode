@@ -8,6 +8,8 @@
 		"topics": ["crk"],
 		"clientID": "testing",
 		"sensor": "teapot_plug",
-		"modelDir": "../test/"
+		"modelDir": "../test/",
+		"numInputs": 2,
+		"outputTopic": "test"
 	}
 }

@@ -7,9 +7,11 @@ funcsigs==1.0.2
 futures==3.2.0
 gast==0.2.0
 grpcio==1.16.1
+hs100==0.0.1
 html5lib==0.9999999
 Markdown==3.0.1
 mock==2.0.0
+netaddr==0.7.19
 numpy==1.15.4
 paho-mqtt==1.4.0
 pbr==5.1.1

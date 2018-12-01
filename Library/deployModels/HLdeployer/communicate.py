@@ -66,7 +66,7 @@ class communicate(loadModel):
                 feature_vec = feature_vec + vals
 
             result = self.compute([feature_vec])[0]
-            print self.compute([feature_vec])
+            print (self.compute([feature_vec]))
             self.sendData(self.outputTopic, "{data:" + str(result) +"}") 
             time.sleep(3)
 

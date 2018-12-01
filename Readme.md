@@ -39,3 +39,21 @@ optional depending on the functionality desired
 	}
 }
 ```
+
+The below table shows which fields are mandatory and their use
+Name of Field | Mandatory | Usage
+host | Yes | Host address
+port | Yes | Port on which mqtt host listens on
+keepalive | Yes | keepalive value for mqtt server
+username | Optional | If the host requires credentials then username needs to be suplied
+pwd | Optional | Used if host requires login credentials
+topics | Optional | Topics need to be listed, if the mqtt client needs to subscribe for any 
+particular topic. In our architecture, for simplicity, we do not configure point to point communication
+between the devices in different hierarchy. Instead we use a common message bus on which every device communicates.
+We partition the hierarchy by configuring each device to subscribe only to those topics that it requires access to.
+clientID | Yes | Each node communicating must have a unique clientID
+sensor | Yes | This 
+
+
+
+https://github.com/j05h/hs100

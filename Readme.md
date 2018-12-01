@@ -14,8 +14,10 @@ library contains 2 submodules.
 	send the result to the next layer
 	/loadModel - Handles loading the frozen tensorflow modules and produces the output
 ```
-
+# Installation
 # How to use the deployModules module
+
+## Configuration
 
 The first step in using the module is to write a config file which tells the library the
 configuration parameters for the mqtt host, port and other relevant information. The 
@@ -57,6 +59,26 @@ numInputs | Yes | This field indicates the number of features for each topic tha
 outputTopic | Yes | This is the topic to which the processed data must be sent to on the broker.
 modelDir | Yes | This is the path to the folder in which the frozen models are stored in
 
+## Functions Provided
+
+This section briefly describes the various functionality available in both the classes
+
+### loadModel
+
+The loadModel class is for simply loading the frozen model and performing inference using that model. It takes the input and config file, and loads the corresponding model file as specified by the config. It then performs inference and returns the value.
+
+Example:
+```
+import json
+with open("config.json") as fp:
+	conf = json.load(fp)
+
+model = loadModel(conf) #initialize model by passing the config file
+#The compute function takes a 2D array as input where each row is a feature vector and returns the output which is the partial inference from the model
+result = model.compute([[2.0, 3.0]]) 
+print result
+# [[[-0.30995443  0.3088935 ]]]
+```
 
 
 

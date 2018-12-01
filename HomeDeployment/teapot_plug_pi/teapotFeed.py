@@ -18,8 +18,10 @@ counter = 0
 while True:
     plugReading = plug.request('meter')['emeter']['get_realtime']
     plugBuf[counter] = plugReading['current']
-    counter = (counter + 1) / 3
-    result = com.compute([[np.mean(plugBuf), np.var(plugBuf)]])[0]
+    counter = (counter + 1) % 3
+    feat1 = (np.mean(plugBuf) - 0.488167) / 1.723526
+    feat2 = (np.var(plugBuf) - 0.220158) / 1.82480 
+    result = com.compute([[feat1, feat2]])[0]
     com.sendData(conf["outputTopic"], "{data: " + str(result) + "}")
     #print com.predictFromWeights([1,2])
     time.sleep(5)

@@ -91,6 +91,35 @@ stopListening | - | Stop the mqtt client loop
 predictionLoop | - | This function repeatedly performs inference every 3 seconds and sends the inference result to the mqtt broker on the topic specified in configuration file. This function is used in the 2nd level of hierarchy - at the data aggregators as explained later.
 
 
+## Usage
+
+There are 2 different usages of this library in the code. One, for the node that is directly connected to the sensor and the second is for data aggreators or nodes at levels higher up in the hierarchy. For the case in which the sensor is directly connected to the node, it's very straightforward. You write the code to extract raw data from the sensors and perform feature extraction, then you call the `compute` function from the `loadModel` class and then send the result out using the `sendData` method of the `communicate` class. 
+
+For data aggregators or other nodes above the sensor in hierarchy, the usage is different. Since we aren't implementing a point to point communication, each of the data aggregator needs to subscribe to the topics the sensor nodes are sending data on. They acquire the said output and then run inference on them. In order to do this, the class allows you to implement callback and implements variables inside the class. The communicate class, creates a dictionary of variables, where in every topic it subscribes to, is used as a key in the dictionary to get the corresponding input. 
+The user defines callback functions in their python code, which should update the internal variable of the class. The list of callbacks is passed as argument to the constructor of the class during initialization. If no callbacks are passed, it is assumed that the program is operating on the first case of sensor nodes.
+
+An example can be found [here](https://github.com/UCSD-SEELab/smarthomeDeploymentCode/blob/master/HomeDeployment/kitchen_hub/kitchenFeed.py)
+In the following piece of code
+```
+# we define a callback function which is called everytime a data is recieved on the topic subscribed to.
+# Here the topic is "MetaSense/nnjson" which is the output stream of the air quality sensor.
+# The class creates an internal field in a dictionary, using the topic as the key
+# in our callback we update this internal field with the value of metasense partial inference.
+
+def on_msg_metasense(mosq, obj, msg):
+    datum = json.loads(str(msg.payload))
+    com.dataDict["MetaSense/nnjson"] = datum["data"][0] #Here we update the internal variable with the value
+    print ("recieved metasense", com.dataDict["MetaSense/nnjson"])
+
+with open("./config.json", 'r') as confFile:
+    conf = json.load(confFile)["test"]
+
+# In this line we pass as input the list of call back functions
+com = communicate(conf, [on_msg_metasense, on_msg_mat, on_msg_plug])
+com.startListening() #start the mqtt client on a listening loop to look out for messages
+com.predictionLoop() #this function automatically performs inference on the last stored value in the internal variable every 3 seconds and sends the result
+
+```
 
 
 https://github.com/j05h/hs100
